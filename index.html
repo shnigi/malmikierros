@@ -1,576 +1,595 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Malmikierros - Täydellinen päivä juoda kaljaa. Maaliskuussa koittaa jälleen kaikkien odottama ja rakastama Malmikierros!" />
+    <meta name="author" content="Malmikierros" />
+    
     <title id="pageTitle">Malmikierros 2025</title>
-    <!--
-
-TemplateMo 548 Training Studio
-
-https://templatemo.com/tm-548-training-studio
-
--->
-    <!-- Additional CSS Files -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="assets/css/bootstrap.min.css"
-    />
-
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css" />
-
-    <link
-      rel="stylesheet"
-      href="assets/css/templatemo-training-studio.css?v=3"
-    />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      
+      .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+      
+      .gradient-text {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      #bg-video {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        object-fit: cover;
+      }
+      
+      .video-overlay {
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(2px);
+      }
+      
+      .glass-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      
+      .dark-glass-card {
+        background: rgba(17, 24, 39, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      nav {
+        transition: all 0.3s ease;
+      }
+      
+      .nav-scrolled {
+        background: rgba(17, 24, 39, 0.98);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+    </style>
   </head>
 
-  <body>
-    <!-- ***** Preloader Start ***** -->
-    <div id="js-preloader" class="js-preloader">
-      <div class="preloader-inner">
-        <span class="dot"></span>
-        <div class="dots">
-          <span></span>
-          <span></span>
-          <span></span>
+  <body class="bg-gray-50">
+    <!-- Video Background -->
+    <video autoplay muted loop id="bg-video" class="fixed-video">
+      <source src="video.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <a href="#top" class="text-2xl font-bold text-white">
+            Malmi<span class="text-purple-400">kierros</span>
+          </a>
+          
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex space-x-8">
+            <a href="#top" class="text-white hover:text-purple-400 transition-colors">Alku</a>
+            <a href="#info" class="text-white hover:text-purple-400 transition-colors">Info</a>
+            <a href="#reitti" class="text-white hover:text-purple-400 transition-colors">Reitti</a>
+            <a href="#aikataulu" class="text-white hover:text-purple-400 transition-colors">Aikataulu</a>
+            <a href="#baarit" class="text-white hover:text-purple-400 transition-colors">Baarit</a>
+          </div>
+          
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" class="md:hidden text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden pb-4">
+          <div class="flex flex-col space-y-2">
+            <a href="#top" class="text-white hover:text-purple-400 transition-colors py-2">Alku</a>
+            <a href="#info" class="text-white hover:text-purple-400 transition-colors py-2">Info</a>
+            <a href="#reitti" class="text-white hover:text-purple-400 transition-colors py-2">Reitti</a>
+            <a href="#aikataulu" class="text-white hover:text-purple-400 transition-colors py-2">Aikataulu</a>
+            <a href="#baarit" class="text-white hover:text-purple-400 transition-colors py-2">Baarit</a>
+          </div>
         </div>
       </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="top" class="min-h-screen flex items-center justify-center relative">
+      <div class="video-overlay absolute inset-0"></div>
+      
+      <div class="relative z-10 text-center px-4">
+        <h6 id="eventDate" class="text-purple-300 text-lg md:text-xl mb-4 font-medium">Se tulee taas!</h6>
+        <h1 class="text-5xl md:text-7xl font-black text-white mb-12">
+          Malmikierros <span id="mainYear" class="gradient-text bg-gradient-to-r from-purple-400 to-pink-400">2025</span>
+        </h1>
+        
+        <!-- Countdown Timer -->
+        <div id="clockdiv" class="flex justify-center gap-4 md:gap-8 mb-8">
+          <div class="glass-card rounded-2xl p-4 md:p-6 w-[120px]">
+            <div class="text-3xl md:text-5xl font-bold gradient-text days mb-2 tabular-nums">0</div>
+            <div class="text-xs md:text-sm text-gray-600 font-medium uppercase">Päivää</div>
+          </div>
+          <div class="glass-card rounded-2xl p-4 md:p-6 w-[120px]">
+            <div class="text-3xl md:text-5xl font-bold gradient-text hours mb-2 tabular-nums">0</div>
+            <div class="text-xs md:text-sm text-gray-600 font-medium uppercase">Tuntia</div>
+          </div>
+          <div class="glass-card rounded-2xl p-4 md:p-6 w-[120px]">
+            <div class="text-3xl md:text-5xl font-bold gradient-text minutes mb-2 tabular-nums">0</div>
+            <div class="text-xs md:text-sm text-gray-600 font-medium uppercase">Min</div>
+          </div>
+          <div class="glass-card rounded-2xl p-4 md:p-6 w-[120px]">
+            <div class="text-3xl md:text-5xl font-bold gradient-text seconds mb-2 tabular-nums">0</div>
+            <div class="text-xs md:text-sm text-gray-600 font-medium uppercase">Sek</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info Section -->
+    <section id="info" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Täydellinen päivä juoda <span class="gradient-text">kaljaa</span>
+          </h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-pink-600 mx-auto mb-6"></div>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Maaliskuussa koittaa jälleen kaikkien odottama ja rakastama
+            Malmikierros! Tule viettämään ikimuistoinen ja humalainen päivä
+            ystävien kanssa.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 shadow-lg">
+            <div class="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold text-gray-900 mb-2">Kokoontuminen</h4>
+            <p class="text-gray-600">Ala-Malmin uimahalli klo 13:00</p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 shadow-lg">
+            <div class="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold text-gray-900 mb-2">Ravintolat</h4>
+            <p class="text-gray-600">15 ravintolaa A-oikeuksin suoraan Malmin sydämessä.</p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 shadow-lg">
+            <div class="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold text-gray-900 mb-2">Ruokailu</h4>
+            <p class="text-gray-600">Ravintola Suski, kolmas tai neljäs etappi.</p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 shadow-lg">
+            <div class="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold text-gray-900 mb-2">Jatkot</h4>
+            <p class="text-gray-600">Eke's Sport & Music Bar tarjoilee janoisille juotavaa ja nälkäisille purtavaa.</p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 shadow-lg">
+            <div class="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold text-gray-900 mb-2">Tapahtuman hinta</h4>
+            <p class="text-gray-600">Tapahtuma on ilmainen kuten aina! Mutta oluet saat kustantaa itse.</p>
+          </div>
+          
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 shadow-lg">
+            <div class="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold text-gray-900 mb-2">Osallistujat</h4>
+            <p class="text-gray-600">Malmikierroksella on vahvat perinteet ja sen suosio on noussut vuosi vuodelta. Tapahtuma perustettiin vuonna 2018. Parhaimpina kertoina kiertäjiä on ollut yli 30!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Route Section -->
+    <section id="reitti" class="py-20 bg-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Kierroksen <span class="gradient-text">reitti</span>
+          </h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-pink-600 mx-auto"></div>
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-2xl">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m76!1m12!1m3!1d2799.8409840612535!2d25.00874008435231!3d60.250449094276156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m61!3e2!4m5!1s0x469208623eb4858d%3A0x28e831cbd597f6e9!2sTeeritupa%2C%20Pekanraitti%204%2C%2000700%20Helsinki!3m2!1d60.252279699999995!2d25.0207974!4m5!1s0x469209cbb3c050fd%3A0xc1c40feaec47d444!2sKulmabaari%2C%20Soidintie%2C%20Helsinki!3m2!1d60.2517326!2d25.017725199999997!4m5!1s0x469208616904e5d5%3A0x64164e40515caafe!2sRavintola%20Cin%20Cin%2C%20Pekankatu%2C%20Helsinki!3m2!1d60.251159799999996!2d25.0142943!4m5!1s0x469208669a05f0e9%3A0xb6ce4a886f34f1b5!2sRavintola%20Suski!3m2!1d60.252587999999996!2d25.0086731!4m5!1s0x46920866954355e7%3A0x49e59172ce2b9b7f!2sBierhaus%20K%C3%B6ln%2C%20Torikatu%2C%20Helsinki!3m2!1d60.251695399999996!2d25.009147499999997!4m5!1s0x46920864174fffff%3A0xc76bc6f9ed2e6898!2sOhjelmaravintola%20Malmintori!3m2!1d60.2537011!2d25.011253699999997!4m5!1s0x46920866915fc507%3A0xb004889a3745dd53!2sKonja%2C%20Torikatu%2C%20Helsinki!3m2!1d60.252319!2d25.008151899999998!4m5!1s0x4692086640272b39%3A0x9030dc2d7a1d5d37!2sCrazy%20Horse!3m2!1d60.2523451!2d25.0052655!4m5!1s0x469209aaf07a33c9%3A0x57299cd611fc2629!2sRavintola%20Rose%2C%20Tilketori%2C%20Helsinki!3m2!1d60.2492623!2d25.003978099999998!4m5!1s0x4692094a6056aeb7%3A0x30bfd8e25e489d06!2sMalmin%20Mestari%2C%20Malmin%20kauppatie%2C%20Helsinki!3m2!1d60.252080299999996!2d25.0113693!5e0!3m2!1sfi!2sfi!4v1618774054732!5m2!1sfi!2sfi"
+            width="100%"
+            height="500"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="aikataulu" class="py-20 bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Aikataulu</h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-pink-600 mx-auto mb-6"></div>
+          <p class="text-lg text-gray-600">
+            Päivän aikana ei hosuta, mutta pyritään noudattamaan seuraavaa aikataulua.
+          </p>
+        </div>
+        
+        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-4 md:p-8 shadow-xl">
+          <div class="space-y-3">
+            <div class="bg-white rounded-xl p-4 md:p-6 flex justify-between items-center shadow">
+              <span class="font-semibold text-gray-900 text-sm md:text-base">Malmin uimahalli</span>
+              <span class="text-purple-600 font-medium text-sm md:text-base">13:00</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 md:p-6 flex justify-between items-center shadow">
+              <span class="font-semibold text-gray-900 text-sm md:text-base">Teeritupa</span>
+              <span class="text-purple-600 font-medium text-sm md:text-base">13:15</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 md:p-6 flex justify-between items-center shadow">
+              <span class="font-semibold text-gray-900 text-sm md:text-base">Kulmabaari</span>
+              <span class="text-purple-600 font-medium text-sm md:text-base">13:45</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 md:p-6 flex justify-between items-center shadow">
+              <span class="font-semibold text-gray-900 text-sm md:text-base">Cin Cin</span>
+              <span class="text-purple-600 font-medium text-sm md:text-base">14:15</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 md:p-6 flex justify-between items-center shadow">
+              <span class="font-semibold text-gray-900 text-sm md:text-base">King Kong</span>
+              <span class="text-purple-600 font-medium text-sm md:text-base">15:00</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 md:p-6 flex justify-between items-center shadow">
+              <span class="font-semibold text-gray-900 text-sm md:text-base">Suski</span>
+              <span class="text-purple-600 font-medium text-sm md:text-base">15:20</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 md:p-6 flex justify-between items-center shadow">
+              <span class="font-semibold text-gray-900 text-sm md:text-base">Pancho Villa</span>
+              <span class="text-purple-600 font-medium text-sm md:text-base">15:30</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 md:p-6 flex justify-between items-center shadow">
+              <span class="font-semibold text-gray-900 text-sm md:text-base">Konja</span>
+              <span class="text-purple-600 font-medium text-sm md:text-base">16:30</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 md:p-6 flex justify-between items-center shadow">
+              <span class="font-semibold text-gray-900 text-sm md:text-base">Tissibaari</span>
+              <span class="text-purple-600 font-medium text-sm md:text-base">17:15</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 md:p-6 flex justify-between items-center shadow">
+              <span class="font-semibold text-gray-900 text-sm md:text-base">Bierhouse</span>
+              <span class="text-purple-600 font-medium text-sm md:text-base">18:00</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 md:p-6 flex justify-between items-center shadow">
+              <span class="font-semibold text-gray-900 text-sm md:text-base">Lakkari</span>
+              <span class="text-purple-600 font-medium text-sm md:text-base">18:45</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 md:p-6 flex justify-between items-center shadow">
+              <span class="font-semibold text-gray-900 text-sm md:text-base">Tillikka</span>
+              <span class="text-purple-600 font-medium text-sm md:text-base">19:30</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 md:p-6 flex justify-between items-center shadow">
+              <span class="font-semibold text-gray-900 text-sm md:text-base">Malmin mestari</span>
+              <span class="text-purple-600 font-medium text-sm md:text-base">20:15</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 md:p-6 flex justify-between items-center shadow">
+              <span class="font-semibold text-gray-900 text-sm md:text-base">Rose</span>
+              <span class="text-purple-600 font-medium text-sm md:text-base">21:00</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 md:p-6 flex justify-between items-center shadow">
+              <span class="font-semibold text-gray-900 text-sm md:text-base">Afrikkabaari</span>
+              <span class="text-purple-600 font-medium text-sm md:text-base">22:00</span>
+            </div>
+            <div class="bg-white rounded-xl p-4 md:p-6 flex justify-between items-center shadow">
+              <span class="font-semibold text-gray-900 text-sm md:text-base">Ekes</span>
+              <span class="text-purple-600 font-medium text-sm md:text-base">23:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photos Gallery -->
+    <section id="trainers" class="py-20 bg-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Fiiliksiä vuosien <span class="gradient-text">varrelta</span>
+          </h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-pink-600 mx-auto"></div>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div class="aspect-square overflow-hidden rounded-2xl shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="openModal('img/s1.jpg')">
+            <img class="w-full h-full object-cover" src="img/s1.jpg" alt="Malmikierros" />
+          </div>
+          <div class="aspect-square overflow-hidden rounded-2xl shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="openModal('img/s2.jpg')">
+            <img class="w-full h-full object-cover" src="img/s2.jpg" alt="Malmikierros" />
+          </div>
+          <div class="aspect-square overflow-hidden rounded-2xl shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="openModal('img/s3.jpg')">
+            <img class="w-full h-full object-cover" src="img/s3.jpg" alt="Malmikierros" />
+          </div>
+          <div class="aspect-square overflow-hidden rounded-2xl shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="openModal('img/s4.jpg')">
+            <img class="w-full h-full object-cover" src="img/s4.jpg" alt="Malmikierros" />
+          </div>
+          <div class="aspect-square overflow-hidden rounded-2xl shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="openModal('img/s5.jpg')">
+            <img class="w-full h-full object-cover" src="img/s5.jpg" alt="Malmikierros" />
+          </div>
+          <div class="aspect-square overflow-hidden rounded-2xl shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="openModal('img/s6.jpg')">
+            <img class="w-full h-full object-cover" src="img/s6.jpg" alt="Malmikierros" />
+          </div>
+          <div class="aspect-square overflow-hidden rounded-2xl shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="openModal('img/s7.jpg')">
+            <img class="w-full h-full object-cover" src="img/s7.jpg" alt="Malmikierros" />
+          </div>
+          <div class="aspect-square overflow-hidden rounded-2xl shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="openModal('img/s8.jpg')">
+            <img class="w-full h-full object-cover" src="img/s8.jpg" alt="Malmikierros" />
+          </div>
+          <div class="aspect-square overflow-hidden rounded-2xl shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="openModal('img/s9.jpg')">
+            <img class="w-full h-full object-cover" src="img/s9.jpg" alt="Malmikierros" />
+          </div>
+          <div class="aspect-square overflow-hidden rounded-2xl shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="openModal('img/s10.jpg')">
+            <img class="w-full h-full object-cover" src="img/s10.jpg" alt="Malmikierros" />
+          </div>
+          <div class="aspect-square overflow-hidden rounded-2xl shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="openModal('img/s11.jpg')">
+            <img class="w-full h-full object-cover" src="img/s11.jpg" alt="Malmikierros" />
+          </div>
+          <div class="aspect-square overflow-hidden rounded-2xl shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="openModal('img/s12.jpg')">
+            <img class="w-full h-full object-cover" src="img/s12.jpg" alt="Malmikierros" />
+          </div>
+          <div class="aspect-square overflow-hidden rounded-2xl shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="openModal('img/s13.jpg')">
+            <img class="w-full h-full object-cover" src="img/s13.jpg" alt="Malmikierros" />
+          </div>
+          <div class="aspect-square overflow-hidden rounded-2xl shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="openModal('img/s14.jpg')">
+            <img class="w-full h-full object-cover" src="img/s14.jpg" alt="Malmikierros" />
+          </div>
+          <div class="aspect-square overflow-hidden rounded-2xl shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="openModal('img/s15.jpg')">
+            <img class="w-full h-full object-cover" src="img/s15.jpg" alt="Malmikierros" />
+          </div>
+          <div class="aspect-square overflow-hidden rounded-2xl shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="openModal('img/s16.jpg')">
+            <img class="w-full h-full object-cover" src="img/s16.jpg" alt="Malmikierros" />
+          </div>
+          <div class="aspect-square overflow-hidden rounded-2xl shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="openModal('img/s19.jpg')">
+            <img class="w-full h-full object-cover" src="img/s19.jpg" alt="Malmikierros" />
+          </div>
+          <div class="aspect-square overflow-hidden rounded-2xl shadow-lg cursor-pointer transition-transform hover:scale-105" onclick="openModal('img/s18.jpg')">
+            <img class="w-full h-full object-cover" src="img/s18.jpg" alt="Malmikierros" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="hidden fixed inset-0 z-[100] bg-black bg-opacity-90 flex items-center justify-center p-4">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10">
+        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      
+      <!-- Previous Button -->
+      <button onclick="previousImage()" class="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 transition-colors bg-black bg-opacity-50 rounded-full p-3 z-10">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+      
+      <!-- Next Button -->
+      <button onclick="nextImage()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 transition-colors bg-black bg-opacity-50 rounded-full p-3 z-10">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+      
+      <img id="modalImage" src="" alt="Malmikierros" class="max-w-full max-h-full object-contain rounded-lg" />
     </div>
-    <!-- ***** Preloader End ***** -->
 
-    <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <nav class="main-nav">
-              <!-- ***** Logo Start ***** -->
-              <a href="index.html" class="logo">Malmi<em>kierros</em></a>
-              <!-- ***** Logo End ***** -->
-              <!-- ***** Menu Start ***** -->
-              <ul class="nav">
-                <li class="scroll-to-section">
-                  <a href="#top" class="active">Alku</a>
-                </li>
-                <li class="scroll-to-section"><a href="#info">Info</a></li>
-                <li class="scroll-to-section"><a href="#reitti">Reitti</a></li>
-                <li class="scroll-to-section">
-                  <a href="#aikataulu">Aikataulu</a>
-                </li>
-                <li class="scroll-to-section"><a href="#baarit">Baarit</a></li>
-              </ul>
-              <a class="menu-trigger">
-                <span>Menu</span>
-              </a>
-              <!-- ***** Menu End ***** -->
-            </nav>
-          </div>
+    <!-- Bars Section -->
+    <section id="baarit" class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Baarit</h2>
+          <div class="w-20 h-1 bg-gradient-to-r from-purple-600 to-pink-600 mx-auto"></div>
         </div>
-      </div>
-    </header>
-    <!-- ***** Header Area End ***** -->
-
-    <!-- ***** Main Banner Area Start ***** -->
-    <div class="main-banner" id="top">
-      <video autoplay muted loop id="bg-video">
-        <source src="video.mp4" type="video/mp4" />
-      </video>
-
-      <div class="video-overlay header-text">
-        <div class="caption">
-          <h6 id="eventDate">Se tulee taas!</h6>
-          <h2 class="mainheading">Malmikierros <em id="mainYear">2025</em></h2>
-          <div class="row" id="clockdiv">
-            <div class="clockinner">
-              <span class="days"></span>
-              <div class="smalltext">Päivää</div>
-            </div>
-            <div class="clockinner">
-              <span class="hours"></span>
-              <div class="smalltext">Tuntia</div>
-            </div>
-            <div class="clockinner">
-              <span class="minutes"></span>
-              <div class="smalltext">Minuuttia</div>
-            </div>
-            <div class="clockinner">
-              <span class="seconds"></span>
-              <div class="smalltext">Sekuntia</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- ***** Main Banner Area End ***** -->
-
-    <!-- ***** Features Item Start ***** -->
-    <section class="section" id="info">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 offset-lg-3">
-            <div class="section-heading">
-              <h2>Täydellinen päivä juoda <em>kaljaa</em></h2>
-              <img src="assets/images/line-dec.png" alt="waves" />
-              <p>
-                Maaliskuussa koittaa jälleen kaikkien odottama ja rakastama
-                Malmikierros! Tule viettämään ikimuistoinen ja humalainen päivä
-                ystävien kanssa.
-              </p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <ul class="features-items">
-              <li class="feature-item">
-                <h4>Kokoontuminen</h4>
-                <p>Ala-Malmin uimahalli klo 13:00</p>
-              </li>
-              <li class="feature-item">
-                <h4>Ruokailu</h4>
-                <p>Ravintola Suski, kolmas tai neljäs etappi.</p>
-              </li>
-              <li class="feature-item">
-                <h4>Jatkot</h4>
-                <p>
-                  Eke's Sport & Music Bar tarjoilee janoisille juotavaa ja
-                  nälkäisille purtavaa.
-                </p>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <ul class="features-items">
-              <li class="feature-item">
-                <h4>Ravintolat</h4>
-                <p>15 ravintolaa A-oikeuksin suoraan Malmin sydämessä.</p>
-              </li>
-              <li class="feature-item">
-                <h4>Tapahtuman hinta</h4>
-                <p>
-                  Tapahtuma on ilmainen kuten aina! Mutta oluet saat kustantaa
-                  itse.
-                </p>
-              </li>
-              <li class="feature-item">
-                <h4>Osallistujat</h4>
-                <p>
-                  Malmikierroksella on vahvat perinteet ja sen suosio on noussut
-                  vuosi vuodelta. Tapahtuma perustettiin vuonna 2018.
-                  Parhaimpina kertoina kiertäjiä on ollut yli 30!
-                </p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ***** Features Item End ***** -->
-
-    <!-- ***** Call to Action Start ***** -->
-    <section class="section" id="reitti">
-      <div class="section-heading">
-        <h2>Kierroksen <em>reitti</em></h2>
-      </div>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m76!1m12!1m3!1d2799.8409840612535!2d25.00874008435231!3d60.250449094276156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m61!3e2!4m5!1s0x469208623eb4858d%3A0x28e831cbd597f6e9!2sTeeritupa%2C%20Pekanraitti%204%2C%2000700%20Helsinki!3m2!1d60.252279699999995!2d25.0207974!4m5!1s0x469209cbb3c050fd%3A0xc1c40feaec47d444!2sKulmabaari%2C%20Soidintie%2C%20Helsinki!3m2!1d60.2517326!2d25.017725199999997!4m5!1s0x469208616904e5d5%3A0x64164e40515caafe!2sRavintola%20Cin%20Cin%2C%20Pekankatu%2C%20Helsinki!3m2!1d60.251159799999996!2d25.0142943!4m5!1s0x469208669a05f0e9%3A0xb6ce4a886f34f1b5!2sRavintola%20Suski!3m2!1d60.252587999999996!2d25.0086731!4m5!1s0x46920866954355e7%3A0x49e59172ce2b9b7f!2sBierhaus%20K%C3%B6ln%2C%20Torikatu%2C%20Helsinki!3m2!1d60.251695399999996!2d25.009147499999997!4m5!1s0x46920864174fffff%3A0xc76bc6f9ed2e6898!2sOhjelmaravintola%20Malmintori!3m2!1d60.2537011!2d25.011253699999997!4m5!1s0x46920866915fc507%3A0xb004889a3745dd53!2sKonja%2C%20Torikatu%2C%20Helsinki!3m2!1d60.252319!2d25.008151899999998!4m5!1s0x4692086640272b39%3A0x9030dc2d7a1d5d37!2sCrazy%20Horse!3m2!1d60.2523451!2d25.0052655!4m5!1s0x469209aaf07a33c9%3A0x57299cd611fc2629!2sRavintola%20Rose%2C%20Tilketori%2C%20Helsinki!3m2!1d60.2492623!2d25.003978099999998!4m5!1s0x4692094a6056aeb7%3A0x30bfd8e25e489d06!2sMalmin%20Mestari%2C%20Malmin%20kauppatie%2C%20Helsinki!3m2!1d60.252080299999996!2d25.0113693!5e0!3m2!1sfi!2sfi!4v1618774054732!5m2!1sfi!2sfi"
-        width="100%"
-        height="450"
-        frameborder="0"
-        style="border: 0"
-        allowfullscreen=""
-        loading="lazy"
-      ></iframe>
-    </section>
-    <!-- ***** Call to Action End ***** -->
-
-    <section class="section" id="aikataulu">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 offset-lg-3">
-            <div class="section-heading dark-bg">
-              <h2>Aikataulu</h2>
-              <img src="assets/images/line-dec.png" alt="" />
-              <p>
-                Päivän aikana ei hosuta, mutta pyritään noudattamaan seuraavaa
-                aikataulua.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-10 offset-lg-1">
-            <div class="schedule-table filtering">
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Teeritupa</td>
-                    <td>13:15 - 13:45</td>
-                  </tr>
-                  <tr>
-                    <td>Kulmabaari</td>
-                    <td>13:55 - 14:30</td>
-                  </tr>
-                  <tr>
-                    <td>Cin Cin</td>
-                    <td>14:35 - 15:10</td>
-                  </tr>
-                  <tr>
-                    <td>Suski ja ruokailu</td>
-                    <td>15:15 - 16:15</td>
-                  </tr>
-                  <tr>
-                    <td>Bierhaus</td>
-                    <td>16:15 - 17:00</td>
-                  </tr>
-                  <tr>
-                    <td>Tissibaari</td>
-                    <td>17:05 - 17:40</td>
-                  </tr>
-                  <tr>
-                    <td>Konja</td>
-                    <td>17:45 - 18:15</td>
-                  </tr>
-                  <tr>
-                    <td>Eke's Pub Saloon</td>
-                    <td>18:15 - 19:00</td>
-                  </tr>
-                  <tr>
-                    <td>Crazy Horse</td>
-                    <td>19:05 - 20:00</td>
-                  </tr>
-                  <tr>
-                    <td>Ravintola Rose</td>
-                    <td>20:10 - 21:00</td>
-                  </tr>
-                  <tr>
-                    <td>Malmin mestari</td>
-                    <td>21:00 - 21:30</td>
-                  </tr>
-                  <tr>
-                    <td>Lucky Lady</td>
-                    <td>21:35 - ~</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ***** Testimonials Starts ***** -->
-    <section class="section" id="trainers">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 offset-lg-3">
-            <div class="section-heading">
-              <h2>Fiiliksiä vuosien<em> varrelta</em></h2>
-              <img src="assets/images/line-dec.png" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 col-md-4 pb-2">
-            <img
-              class="content-image img-fluid d-block mx-auto"
-              src="img/s1.jpg"
-              alt=""
-            />
-          </div>
-          <div class="col-lg-4 col-md-4 pb-2">
-            <img
-              class="content-image img-fluid d-block mx-auto"
-              src="img/s2.jpg"
-              alt=""
-            />
-          </div>
-          <div class="col-lg-4 col-md-4 pb-2">
-            <img
-              class="content-image img-fluid d-block mx-auto"
-              src="img/s3.jpg"
-              alt=""
-            />
-          </div>
-
-          <div class="col-lg-4 col-md-4 pb-2">
-            <img
-              class="content-image img-fluid d-block mx-auto"
-              src="img/s4.jpg"
-              alt=""
-            />
-          </div>
-
-          <div class="col-lg-4 col-md-4 pb-2">
-            <img
-              class="content-image img-fluid d-block mx-auto"
-              src="img/s5.jpg"
-              alt=""
-            />
-          </div>
-
-          <div class="col-lg-4 col-md-4 pb-2">
-            <img
-              class="content-image img-fluid d-block mx-auto"
-              src="img/s6.jpg"
-              alt=""
-            />
-          </div>
-
-          <div class="col-lg-4 col-md-4 pb-2">
-            <img
-              class="content-image img-fluid d-block mx-auto"
-              src="img/s7.jpg"
-              alt=""
-            />
-          </div>
-
-          <div class="col-lg-4 col-md-4 pb-2">
-            <img
-              class="content-image img-fluid d-block mx-auto"
-              src="img/s8.jpg"
-              alt=""
-            />
-          </div>
-
-          <div class="col-lg-4 col-md-4 pb-2">
-            <img
-              class="content-image img-fluid d-block mx-auto"
-              src="img/s9.jpg"
-              alt=""
-            />
-          </div>
-
-          <div class="col-lg-4 col-md-4 pb-2">
-            <img
-              class="content-image img-fluid d-block mx-auto"
-              src="img/s10.jpg"
-              alt=""
-            />
-          </div>
-          <div class="col-lg-4 col-md-4 pb-2">
-            <img
-              class="content-image img-fluid d-block mx-auto"
-              src="img/s11.jpg"
-              alt=""
-            />
-          </div>
-          <div class="col-lg-4 col-md-4 pb-2">
-            <img
-              class="content-image img-fluid d-block mx-auto"
-              src="img/s12.jpg"
-              alt=""
-            />
-          </div>
-
-          <div class="col-lg-4 col-md-4 pb-2">
-            <img
-              class="content-image img-fluid d-block mx-auto"
-              src="img/s13.jpg"
-              alt=""
-            />
-          </div>
-
-          <div class="col-lg-4 col-md-4 pb-2">
-            <img
-              class="content-image img-fluid d-block mx-auto"
-              src="img/s14.jpg"
-              alt=""
-            />
-          </div>
-
-          <div class="col-lg-4 col-md-4 pb-2">
-            <img
-              class="content-image img-fluid d-block mx-auto"
-              src="img/s15.jpg"
-              alt=""
-            />
-          </div>
-
-          <div class="col-lg-4 col-md-4 pb-2">
-            <img
-              class="content-image img-fluid d-block mx-auto"
-              src="img/s16.jpg"
-              alt=""
-            />
-          </div>
-
-          <div class="col-lg-4 col-md-4 pb-2">
-            <img
-              class="content-image img-fluid d-block mx-auto"
-              src="img/s19.jpg"
-              alt=""
-            />
-          </div>
-
-          <div class="col-lg-4 col-md-4 pb-2">
-            <img
-              class="content-image img-fluid d-block mx-auto"
-              src="img/s18.jpg"
-              alt=""
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="baarit">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 offset-lg-3">
-            <div class="section-heading">
-              <h2 style="color: white">Baarit</h2>
-              <img src="assets/images/line-dec.png" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 col-sm-6">
-              <div class="single-events row">
-                <div class="col-lg-4 image">
-                  <img src="img/e1.jpg" alt="" />
-                </div>
-                <div class="col-lg-7 details">
-                  <h4>Teeritupa</h4>
-                  <p>
-                    Pelin avaus lähtee legendaarisesta Teerituvasta Ala-Malmin
-                    sydämestä Klo 13.15.
-                  </p>
-                </div>
-              </div>
-              <div class="single-events row">
-                <div class="col-lg-4 image">
-                  <img src="img/e2-cincin.jpg" alt="" />
-                </div>
-                <div class="col-lg-7 details">
-                  <h4>Cin Cin</h4>
-                  <p>
-                    Matkalla syömään pysähdymme sammuttamaan janoa Cin Ciniin,
-                    jossa on mahdollisuus tavata aitoja suomalaisia pubiruusuja.
-                  </p>
-                </div>
-              </div>
-              <div class="single-events row">
-                <div class="col-lg-4 image">
-                  <img src="img/e3.jpg" alt="" />
-                </div>
-                <div class="col-lg-7 details">
-                  <h4>Suski</h4>
-                  <p>
-                    Perinteinen ruokatauko vietetään Malmin ensimmäisessä
-                    olutravintolassa, Suskissa. Suskissa suoritamme mahan täytön
-                    ei nestepitoisella tavaralla, vaan ihan oikealla ruualla.
-                    Madventures kaksikon ohjeita noudattaen: muista syödä kun
-                    otat.
-                  </p>
-                </div>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Teeritupa -->
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 shadow-lg">
+            <div class="flex gap-4">
+              <img src="img/e1.jpg" alt="Teeritupa" class="w-24 h-24 md:w-32 md:h-32 rounded-xl object-cover flex-shrink-0" />
+              <div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">Teeritupa</h4>
+                <p class="text-gray-600">Pelin avaus lähtee legendaarisesta Teerituvasta Ala-Malmin sydämestä Klo 13.15.</p>
               </div>
             </div>
-
-            <div class="col-lg-6 col-sm-6">
-              <div class="single-events row">
-                <div class="col-lg-4 image">
-                  <img src="img/e4.jpg" alt="" />
-                </div>
-                <div class="col-lg-7 details">
-                  <h4>Konja</h4>
-                  <p>
-                    Huhujen mukaan poke ilmestyy ovelle klo 18 eteenpäin, joten
-                    hyvällä tuurilla pääsemme vierailemaan tähänkin puljuun.
-                  </p>
-                </div>
-              </div>
-              <div class="single-events row">
-                <div class="col-lg-4 image">
-                  <img src="img/e5.jpg" alt="" />
-                </div>
-                <div class="col-lg-7 details">
-                  <h4>Bierhaus</h4>
-                  <p>
-                    Malmin oikea kuningas, eli Bierhause tarjoilee laadukkaita
-                    oluita läheltä ja kaukaa.
-                  </p>
-                </div>
-              </div>
-              <div class="single-events row">
-                <div class="col-lg-4 image">
-                  <img src="img/e6.jpg" alt="" />
-                </div>
-                <div class="col-lg-7 details">
-                  <h4>Tissibaari</h4>
-                  <p>
-                    Malmin legendaarinen tissibaari - tämä hieman sivussa
-                    häpyilevä menomesta on jäänyt karaokefanien mieleen.
-                  </p>
-                </div>
+          </div>
+          
+          <!-- Cin Cin -->
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 shadow-lg">
+            <div class="flex gap-4">
+              <img src="img/e2-cincin.jpg" alt="Cin Cin" class="w-24 h-24 md:w-32 md:h-32 rounded-xl object-cover flex-shrink-0" />
+              <div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">Cin Cin</h4>
+                <p class="text-gray-600">Matkalla syömään pysähdymme sammuttamaan janoa Cin Ciniin, jossa on mahdollisuus tavata aitoja suomalaisia pubiruusuja.</p>
               </div>
             </div>
-
-            <div class="col-lg-6 col-sm-6">
-              <div class="single-events row">
-                <div class="col-lg-4 image">
-                  <img src="img/e7.jpg" alt="" />
-                </div>
-                <div class="col-lg-7 details">
-                  <h4>Lucky Lady</h4>
-                  <p>
-                    Malmin omituisin terassiravintola ja kellarikerho. Varma
-                    jatkopaikka.
-                  </p>
-                </div>
+          </div>
+          
+          <!-- King Bar & Restaurant -->
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 shadow-lg">
+            <div class="flex gap-4">
+              <div class="w-24 h-24 md:w-32 md:h-32 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center flex-shrink-0">
+                <svg class="w-12 h-12 md:w-16 md:h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                </svg>
               </div>
-
-              <div class="single-events row">
-                <div class="col-lg-4 image">
-                  <img src="img/e8.jpg" alt="" />
-                </div>
-                <div class="col-lg-7 details">
-                  <h4>Ruoka-aika aka Eke's Pub Saloon</h4>
-                  <p>
-                    Saluuna, sekä buffetravintola. Oluttakin täältä saa. Ja
-                    välillä aamupuuroa iltapalaksi.
-                  </p>
-                </div>
+              <div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">King Bar & Restaurant</h4>
+                <p class="text-gray-600">King Kong on väistynyt ja tilalle on tullut King Bar, kuka on paikan nopein?</p>
               </div>
             </div>
-
-            <div class="col-lg-6 col-sm-6">
-              <div class="single-events row">
-                <div class="col-lg-4 image">
-                  <img src="img/e9.jpg" alt="" />
-                </div>
-                <div class="col-lg-7 details">
-                  <h4>Crazy Horse</h4>
-                  <p>
-                    Malmin mukamas kovin menomesta. Pysähdytään alakerrassa
-                    luikauttamassa muutamat laulut!
-                  </p>
-                </div>
+          </div>
+          
+          <!-- Suski -->
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 shadow-lg">
+            <div class="flex gap-4">
+              <img src="img/e3.jpg" alt="Suski" class="w-24 h-24 md:w-32 md:h-32 rounded-xl object-cover flex-shrink-0" />
+              <div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">Suski</h4>
+                <p class="text-gray-600">Perinteinen ruokatauko vietetään Malmin ensimmäisessä olutravintolassa, Suskissa. Madventures kaksikon ohjeita noudattaen: muista syödä kun otat.</p>
               </div>
-
-              <div class="single-events row">
-                <div class="col-lg-4 image">
-                  <img src="img/e10.jpg" alt="" />
-                </div>
-                <div class="col-lg-7 details">
-                  <h4>Malmin mestari</h4>
-                  <p>
-                    Ylä-Malmin puolella ennen putkea eli tuubia on monella eri
-                    nimellä esiintynyt Malmin mestari.
-                  </p>
-                </div>
+            </div>
+          </div>
+          
+          <!-- Konja -->
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 shadow-lg">
+            <div class="flex gap-4">
+              <img src="img/e4.jpg" alt="Konja" class="w-24 h-24 md:w-32 md:h-32 rounded-xl object-cover flex-shrink-0" />
+              <div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">Konja</h4>
+                <p class="text-gray-600">Huhujen mukaan poke ilmestyy ovelle klo 18 eteenpäin, joten hyvällä tuurilla pääsemme vierailemaan tähänkin puljuun.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Bierhaus -->
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 shadow-lg">
+            <div class="flex gap-4">
+              <img src="img/e5.jpg" alt="Bierhaus" class="w-24 h-24 md:w-32 md:h-32 rounded-xl object-cover flex-shrink-0" />
+              <div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">Bierhaus</h4>
+                <p class="text-gray-600">Malmin oikea kuningas, eli Bierhause tarjoilee laadukkaita oluita läheltä ja kaukaa.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Tissibaari -->
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 shadow-lg">
+            <div class="flex gap-4">
+              <img src="img/e6.jpg" alt="Tissibaari" class="w-24 h-24 md:w-32 md:h-32 rounded-xl object-cover flex-shrink-0" />
+              <div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">Tissibaari</h4>
+                <p class="text-gray-600">Malmin legendaarinen tissibaari - tämä hieman sivussa häpyilevä menomesta on jäänyt karaokefanien mieleen.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Lucky Lady -->
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 shadow-lg">
+            <div class="flex gap-4">
+              <img src="img/e7.jpg" alt="Lucky Lady" class="w-24 h-24 md:w-32 md:h-32 rounded-xl object-cover flex-shrink-0" />
+              <div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">Lucky Lady</h4>
+                <p class="text-gray-600">Malmin omituisin terassiravintola ja kellarikerho. Varma jatkopaikka.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Eke's -->
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 shadow-lg">
+            <div class="flex gap-4">
+              <img src="img/e8.jpg" alt="Eke's Pub Saloon" class="w-24 h-24 md:w-32 md:h-32 rounded-xl object-cover flex-shrink-0" />
+              <div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">Eke's Pub Saloon</h4>
+                <p class="text-gray-600">Saluuna, sekä buffetravintola. Oluttakin täältä saa. Ja välillä aamupuuroa iltapalaksi.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Afro Snack Café & Bar -->
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 shadow-lg">
+            <div class="flex gap-4">
+              <div class="w-24 h-24 md:w-32 md:h-32 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center flex-shrink-0">
+                <svg class="w-12 h-12 md:w-16 md:h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">Afro Snack Café & Bar</h4>
+                <p class="text-gray-600">Mustien miesten yökerho. Afrikkalaisia oluita ja pornahtavat pinkit valot.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Tillikka -->
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 shadow-lg">
+            <div class="flex gap-4">
+              <div class="w-24 h-24 md:w-32 md:h-32 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center flex-shrink-0">
+                <svg class="w-12 h-12 md:w-16 md:h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">Tillikka</h4>
+                <p class="text-gray-600">Vanha kunnon tillikka tekee paluun uuteen lokaatioon, liekö vanhan veroinen?</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Ravintola Rose -->
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 shadow-lg">
+            <div class="flex gap-4">
+              <div class="w-24 h-24 md:w-32 md:h-32 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center flex-shrink-0">
+                <svg class="w-12 h-12 md:w-16 md:h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">Ravintola Rose</h4>
+                <p class="text-gray-600">Varokaa hanasta karjalaa. Vatsataudin vaara</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Malmin mestari -->
+          <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 shadow-lg">
+            <div class="flex gap-4">
+              <img src="img/e10.jpg" alt="Malmin mestari" class="w-24 h-24 md:w-32 md:h-32 rounded-xl object-cover flex-shrink-0" />
+              <div>
+                <h4 class="text-xl font-bold text-gray-900 mb-2">Malmin mestari</h4>
+                <p class="text-gray-600">Ylä-Malmin puolella ennen putkea eli tuubia on monella eri nimellä esiintynyt Malmin mestari.</p>
               </div>
             </div>
           </div>
@@ -578,62 +597,149 @@ https://templatemo.com/tm-548-training-studio
       </div>
     </section>
 
-    <footer>
-      Copyright Malmikierros <span id="dynamicYear"></span> - Malmikierros est.
-      2018
+    <!-- Footer -->
+    <footer class="gradient-bg py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+        <p class="text-sm md:text-base">
+          Copyright Malmikierros <span id="dynamicYear"></span> - Malmikierros est. 2018
+        </p>
+      </div>
     </footer>
 
-    <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
-
-    <!-- Bootstrap -->
-    <script src="assets/js/bootstrap.min.js"></script>
-
-    <!-- Plugins -->
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/countdown.js?updated=1.0"></script>
-
-    <!-- Global Init -->
-    <script src="assets/js/custom.js?v=1"></script>
-
-    <!-- Dynamic date and year updates -->
+    <!-- Modern JavaScript -->
     <script>
-      // Function to calculate the last Saturday of March for a given year
+      // Gallery images array
+      const galleryImages = [
+        'img/s1.jpg', 'img/s2.jpg', 'img/s3.jpg', 'img/s4.jpg',
+        'img/s5.jpg', 'img/s6.jpg', 'img/s7.jpg', 'img/s8.jpg',
+        'img/s9.jpg', 'img/s10.jpg', 'img/s11.jpg', 'img/s12.jpg',
+        'img/s13.jpg', 'img/s14.jpg', 'img/s15.jpg', 'img/s16.jpg',
+        'img/s19.jpg', 'img/s18.jpg'
+      ];
+      
+      let currentImageIndex = 0;
+      
+      // Image Modal Functions
+      function openModal(imageSrc) {
+        currentImageIndex = galleryImages.indexOf(imageSrc);
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        modalImage.src = imageSrc;
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+      
+      function closeModal() {
+        const modal = document.getElementById('imageModal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+      
+      function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+        document.getElementById('modalImage').src = galleryImages[currentImageIndex];
+      }
+      
+      function previousImage() {
+        currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+        document.getElementById('modalImage').src = galleryImages[currentImageIndex];
+      }
+      
+      // Close modal on ESC key, navigate with arrow keys
+      document.addEventListener('keydown', function(event) {
+        const modal = document.getElementById('imageModal');
+        if (!modal.classList.contains('hidden')) {
+          if (event.key === 'Escape') {
+            closeModal();
+          } else if (event.key === 'ArrowRight') {
+            nextImage();
+          } else if (event.key === 'ArrowLeft') {
+            previousImage();
+          }
+        }
+      });
+      
+      // Close modal when clicking outside the image
+      document.getElementById('imageModal').addEventListener('click', function(event) {
+        if (event.target === this) {
+          closeModal();
+        }
+      });
+      
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+      
+      // Close mobile menu on link click
+      document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+      
+      // Navbar scroll effect
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add('nav-scrolled');
+        } else {
+          navbar.classList.remove('nav-scrolled');
+        }
+      });
+      
+      // Countdown timer
       function getLastSaturdayOfMarch(year) {
-        var lastDay = new Date(year, 2, 31); // March 31st
+        let lastDay = new Date(year, 2, 31);
         while (lastDay.getDay() !== 6) {
-          // 6 = Saturday
           lastDay.setDate(lastDay.getDate() - 1);
         }
         return lastDay;
       }
-
-      // Get current year and calculate the event date
-      var currentYear = new Date().getFullYear();
-      var eventDate = getLastSaturdayOfMarch(currentYear);
-
-      // If the event has already passed this year, use next year's date
+      
+      let currentYear = new Date().getFullYear();
+      let eventDate = getLastSaturdayOfMarch(currentYear);
+      
       if (eventDate < new Date()) {
         currentYear = currentYear + 1;
         eventDate = getLastSaturdayOfMarch(currentYear);
       }
-
-      // Format the date for display (DD.M.YYYY)
-      var formattedDate =
-        eventDate.getDate() +
-        '.' +
-        (eventDate.getMonth() + 1) +
-        '.' +
-        currentYear;
-
-      // Update the HTML elements
-      document.getElementById('pageTitle').textContent =
-        'Malmikierros ' + currentYear;
-      document.getElementById('eventDate').textContent =
-        'Se tulee TAAS! ' + formattedDate;
+      
+      const formattedDate = eventDate.getDate() + '.' + (eventDate.getMonth() + 1) + '.' + currentYear;
+      
+      document.getElementById('pageTitle').textContent = 'Malmikierros ' + currentYear;
+      document.getElementById('eventDate').textContent = 'Se tulee TAAS! ' + formattedDate;
       document.getElementById('mainYear').textContent = currentYear;
-      document.getElementById('dynamicYear').textContent =
-        new Date().getFullYear();
+      document.getElementById('dynamicYear').textContent = new Date().getFullYear();
+      
+      // Countdown update
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = eventDate.getTime() - now;
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        document.querySelector('.days').textContent = days;
+        document.querySelector('.hours').textContent = hours;
+        document.querySelector('.minutes').textContent = minutes;
+        document.querySelector('.seconds').textContent = seconds;
+        
+        if (distance < 0) {
+          document.querySelector('.days').textContent = '0';
+          document.querySelector('.hours').textContent = '0';
+          document.querySelector('.minutes').textContent = '0';
+          document.querySelector('.seconds').textContent = '0';
+        }
+      }
+      
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
     </script>
   </body>
 </html>
